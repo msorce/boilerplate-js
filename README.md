@@ -1,2 +1,2 @@
 # boilerplate-js
-starter template for projects
+Starter js template for projects
