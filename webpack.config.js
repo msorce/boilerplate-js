@@ -2,43 +2,42 @@ const path = require("path");
 
 module.exports = {
     mode: "development",
-    entry: './src/index.js',
+    entry: "./src/index.js",
     output: {
-        filename: 'main.js',
-        clean: true
+        path: path.join(__dirname, "dist"),
+        filename: "main.js",
+        publicPath: '/',
     },
     devtool: "inline-source-map",
     devServer: {
         static: {
-            directory: path.resolve(__dirname, 'public'),
-            watch: true
+            directory: path.join(__dirname, "public")
         },
-        open: true,
-        hot: true,
+        compress: true,
+        port: 9000,
+        hot: true
     },
     module: {
         rules: [
             {
                 // sass
                 test: /\.scss$/,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    'sass-loader'
-                ]
-
+                use: ["style-loader", "css-loader", "sass-loader"]
             },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: 'babel-loader',
+                    loader: "babel-loader",
                     options: {
-                        presets: ['@babel/preset-env']
+                        presets: ["@babel/preset-env"]
                     }
                 }
+            },
+            {
+                test: /\.html$/i,
+                loader: "html-loader"
             }
         ]
     }
-
-}
+};
