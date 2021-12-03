@@ -1,3 +1,4 @@
 import { camelCase } from "lodash"
 import "./style.scss"
-console.log("hello");
+let arr = [1, 2, 3]
+console.log("hello", [...arr, 4]);
